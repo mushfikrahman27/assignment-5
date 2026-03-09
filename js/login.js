@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
              
             errorMessage.style.display = 'block';
             
-            
             setTimeout(() => {
                 errorMessage.style.display = 'none';
             }, 3000);
@@ -43,12 +42,14 @@ function loginUser(username, password) {
 }
 
  
-function checkAuth() {
+function checkAuth()
+ {
     return localStorage.getItem('isLoggedIn') === 'true';
 }
 
  
-function logoutUser() {
+function logoutUser() 
+{
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('username');
     window.location.href = 'index.html';
