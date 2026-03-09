@@ -13,7 +13,8 @@ function logoutUser() {
     window.location.href = 'index.html';
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() 
+{
  
     if (!checkAuth()) {
         console.log('User not authenticated, redirecting to login...');
@@ -27,7 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
  
-function initializeDashboard() {
+function initializeDashboard() 
+{
     console.log('Initializing dashboard...');
   
     loadAllIssues();
@@ -74,7 +76,8 @@ function setupEventListeners() {
 }
 
  
-async function loadAllIssues() {
+async function loadAllIssues() 
+{
     try {
         console.log('Starting to load all issues...');
         showLoader();
@@ -91,7 +94,8 @@ async function loadAllIssues() {
     }
 }
  
-function renderIssues(issues) {
+function renderIssues(issues) 
+{
     console.log('Rendering issues:', issues);
     console.log('Number of issues to render:', issues.length);
     
@@ -123,7 +127,8 @@ function renderIssues(issues) {
 }
 
  
-function createIssueCard(issue) {
+function createIssueCard(issue) 
+{
     const statusClass = issue.status?.toLowerCase() === 'open' ? 'open' : 'closed';
     const priorityBadge = getPriorityBadge(issue.priority);
     const labelsHTML = issue.labels && issue.labels.length > 0 ? 
@@ -148,7 +153,8 @@ function createIssueCard(issue) {
     `;
 }
  
-function getPriorityBadge(priority) {
+function getPriorityBadge(priority) 
+{
     const priorityColors = {
         'high': '#ff4444',
         'medium': '#ffaa00',
@@ -160,7 +166,8 @@ function getPriorityBadge(priority) {
 }
 
  
-function filterIssues(status) {
+function filterIssues(status) 
+{
     currentFilter = status;
     
  
@@ -185,7 +192,8 @@ function filterIssues(status) {
 }
 
  
-async function performSearch() {
+async function performSearch()
+ {
     const searchInput = document.getElementById('searchInput');
     const query = searchInput.value.trim();
     
@@ -218,7 +226,8 @@ async function performSearch() {
 }
 
  
-async function openIssueModal(issueId) {
+async function openIssueModal(issueId)
+ {
     try {
         showLoader();
         const issue = await fetchIssueById(issueId);
@@ -232,7 +241,8 @@ async function openIssueModal(issueId) {
 }
 
  
-function showIssueModal(issue) {
+function showIssueModal(issue)
+ {
     if (!issue) {
         showError('Issue not found.');
         return;
@@ -289,30 +299,35 @@ function showIssueModal(issue) {
 }
 
  
-function closeModal() {
+function closeModal() 
+{
     const modal = document.getElementById('issueModal');
     modal.style.display = 'none';
 }
 
  
-function updateIssueCount(count) {
+function updateIssueCount(count)
+ {
     const issueCount = document.getElementById('issueCount');
     issueCount.textContent = `${count} issue${count !== 1 ? 's' : ''}`;
 }
  
-function showLoader() {
+function showLoader() 
+{
     const loader = document.getElementById('loader');
     loader.style.display = 'flex';
 }
 
  
-function hideLoader() {
+function hideLoader() 
+{
     const loader = document.getElementById('loader');
     loader.style.display = 'none';
 }
 
  
-function showError(message) {
+function showError(message)
+ {
     const container = document.getElementById('issuesContainer');
     container.innerHTML = `
         <div class="error-message">
