@@ -1,7 +1,7 @@
-// API service functions
+ 
 const API_BASE_URL = 'https://phi-lab-server.vercel.app/api/v1/lab';
 
-// Fetch all issues
+ 
 async function fetchAllIssues() {
     try {
         console.log('Fetching from:', `${API_BASE_URL}/issues`);
@@ -12,15 +12,14 @@ async function fetchAllIssues() {
         }
         const result = await response.json();
         console.log('API response:', result);
-        // Return the data array from the response
+        
         return result.data || [];
     } catch (error) {
         console.error('Error fetching all issues:', error);
         throw error;
     }
 }
-
-// Fetch single issue by ID
+ 
 async function fetchIssueById(id) {
     try {
         const response = await fetch(`${API_BASE_URL}/issue/${id}`);
@@ -36,7 +35,7 @@ async function fetchIssueById(id) {
     }
 }
 
-// Search issues
+ 
 async function searchIssues(query) {
     try {
         const response = await fetch(`${API_BASE_URL}/issues/search?q=${encodeURIComponent(query)}`);
@@ -44,7 +43,7 @@ async function searchIssues(query) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const result = await response.json();
-        // Return the data array from the response
+       
         return result.data || [];
     } catch (error) {
         console.error('Error searching issues:', error);
@@ -52,7 +51,7 @@ async function searchIssues(query) {
     }
 }
 
-// Format date helper function
+ 
 function formatDate(dateString) {
     if (!dateString) return 'N/A';
     

@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+ 
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     background-color: #f8f9fa;
 }
 
-/* Login Page Styles */
+ 
 .login-page {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
@@ -127,13 +127,13 @@ body {
     margin: 5px 0;
 }
 
-/* Dashboard Styles */
+ 
 .dashboard-page {
     background-color: #f8f9fa;
     min-height: 100vh;
 }
 
-/* Navbar */
+ 
 .navbar {
     background: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -224,14 +224,14 @@ body {
     background: #c82333;
 }
 
-/* Main Content */
+ 
 .main-content {
     max-width: 1200px;
     margin: 0 auto;
     padding: 30px 20px;
 }
 
-/* Tabs */
+ 
 .tabs-section {
     margin-bottom: 20px;
 }
@@ -265,7 +265,7 @@ body {
     border-bottom-color: #667eea;
 }
 
-/* Info Row */
+ 
 .info-row {
     display: flex;
     justify-content: space-between;
@@ -310,7 +310,7 @@ body {
     background-color: #6f42c1;
 }
 
-/* Loading Spinner */
+ 
 .loader {
     display: flex;
     justify-content: center;
@@ -332,7 +332,7 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-/* Issues Container */
+ 
 .issues-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -340,7 +340,7 @@ body {
     margin-bottom: 40px;
 }
 
-/* Issue Cards */
+ 
 .issue-card {
     background: white;
     border-radius: 12px;
@@ -365,7 +365,7 @@ body {
     border-top-color: #6f42c1; /* Purple for closed */
 }
 
-/* Priority Badge - Top Right */
+ 
 .priority-top-right {
     position: absolute;
     top: 15px;
@@ -405,7 +405,7 @@ body {
     overflow: hidden;
 }
 
-/* Issue Labels - Below Description */
+ 
 .issue-labels {
     display: flex;
     gap: 6px;
@@ -473,7 +473,7 @@ body {
     color: #495057;
 }
 
-/* Label Badges - Enhanced */
+ 
 .label-badge {
     padding: 4px 8px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -491,7 +491,7 @@ body {
     transform: scale(1.05);
 }
 
-/* Special colors for common labels */
+ 
 .label-badge:nth-child(1) { background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); } /* bug */
 .label-badge:nth-child(2) { background: linear-gradient(135deg, #51cf66 0%, #2c9e3b 100%); } /* enhancement */
 .label-badge:nth-child(3) { background: linear-gradient(135deg, #339af0 0%, #1c7ed6 100%); } /* help wanted */
@@ -505,7 +505,7 @@ body {
     padding-top: 10px;
 }
 
-/* No Results */
+ 
 .no-results {
     text-align: center;
     padding: 60px 20px;
@@ -517,7 +517,7 @@ body {
     margin-bottom: 20px;
 }
 
-/* Error Message */
+ 
 .error-message {
     text-align: center;
     padding: 40px 20px;
@@ -539,7 +539,7 @@ body {
     font-weight: 500;
 }
 
-/* Modal */
+ 
 .modal {
     display: none;
     position: fixed;
@@ -705,14 +705,14 @@ body {
     }
 }
 
-/* Tablet Responsive */
+ 
 @media (min-width: 481px) and (max-width: 768px) {
     .issues-container {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Desktop Responsive */
+ 
 @media (min-width: 769px) {
     .issues-container {
         grid-template-columns: repeat(4, 1fr);

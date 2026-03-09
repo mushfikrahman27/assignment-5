@@ -1,8 +1,8 @@
-// Dashboard functionality
+ 
 let allIssues = [];
 let currentFilter = 'all';
 
-// Authentication functions (needed since login.js is not included)
+ 
 function checkAuth() {
     return localStorage.getItem('isLoggedIn') === 'true';
 }
@@ -14,7 +14,7 @@ function logoutUser() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Check authentication
+ 
     if (!checkAuth()) {
         console.log('User not authenticated, redirecting to login...');
         window.location.href = 'index.html';
@@ -22,24 +22,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     console.log('User authenticated, initializing dashboard...');
-    // Initialize dashboard
+ 
     initializeDashboard();
 });
 
-// Initialize dashboard
+ 
 function initializeDashboard() {
     console.log('Initializing dashboard...');
-    // Load all issues
+  
     loadAllIssues();
-    
-    // Setup event listeners
+   
     setupEventListeners();
     console.log('Dashboard initialized');
 }
 
-// Setup event listeners
+ 
 function setupEventListeners() {
-    // Tab buttons
+  
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const status = this.dataset.status;
@@ -47,7 +46,7 @@ function setupEventListeners() {
         });
     });
 
-    // Search functionality
+ 
     const searchInput = document.getElementById('searchInput');
     const searchBtn = document.getElementById('searchBtn');
     
@@ -58,10 +57,10 @@ function setupEventListeners() {
         }
     });
 
-    // Logout button
+ 
     document.getElementById('logoutBtn').addEventListener('click', logoutUser);
 
-    // Modal close
+ 
     const modal = document.getElementById('issueModal');
     const closeBtn = modal.querySelector('.modal-close');
     
@@ -74,7 +73,7 @@ function setupEventListeners() {
     });
 }
 
-// Load all issues
+ 
 async function loadAllIssues() {
     try {
         console.log('Starting to load all issues...');
@@ -91,8 +90,7 @@ async function loadAllIssues() {
         hideLoader();
     }
 }
-
-// Render issues
+ 
 function renderIssues(issues) {
     console.log('Rendering issues:', issues);
     console.log('Number of issues to render:', issues.length);
@@ -113,7 +111,7 @@ function renderIssues(issues) {
     console.log('Generated HTML length:', issuesHTML.length);
     container.innerHTML = issuesHTML;
     
-    // Add click listeners to issue cards
+   
     container.querySelectorAll('.issue-card').forEach(card => {
         card.addEventListener('click', function() {
             const issueId = this.dataset.issueId;
@@ -124,7 +122,7 @@ function renderIssues(issues) {
     console.log('Issues rendered successfully');
 }
 
-// Create issue card HTML
+ 
 function createIssueCard(issue) {
     const statusClass = issue.status?.toLowerCase() === 'open' ? 'open' : 'closed';
     const priorityBadge = getPriorityBadge(issue.priority);
@@ -149,8 +147,7 @@ function createIssueCard(issue) {
         </div>
     `;
 }
-
-// Get priority badge HTML
+ 
 function getPriorityBadge(priority) {
     const priorityColors = {
         'high': '#ff4444',
@@ -162,19 +159,18 @@ function getPriorityBadge(priority) {
     return `<span class="priority-badge" style="background-color: ${color}">${priority || 'Medium'}</span>`;
 }
 
-// Filter issues by status
+ 
 function filterIssues(status) {
     currentFilter = status;
     
-    // Update active tab
+ 
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.remove('active');
         if (btn.dataset.status === status) {
             btn.classList.add('active');
         }
     });
-    
-    // Filter issues
+ 
     let filteredIssues = allIssues;
     
     if (status === 'open') {
@@ -182,19 +178,19 @@ function filterIssues(status) {
     } else if (status === 'closed') {
         filteredIssues = allIssues.filter(issue => issue.status?.toLowerCase() === 'closed');
     }
-    // For 'all', keep allIssues as is
+  
     
     renderIssues(filteredIssues);
     updateIssueCount(filteredIssues.length);
 }
 
-// Perform search
+ 
 async function performSearch() {
     const searchInput = document.getElementById('searchInput');
     const query = searchInput.value.trim();
     
     if (!query) {
-        // If search is empty, restore the current tab filter
+        
         filterIssues(currentFilter);
         return;
     }
@@ -203,7 +199,7 @@ async function performSearch() {
         showLoader();
         const searchResults = await searchIssues(query);
         
-        // Reset active tab to All during search
+        
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.classList.remove('active');
             if (btn.dataset.status === 'all') {
@@ -221,7 +217,7 @@ async function performSearch() {
     }
 }
 
-// Open issue modal
+ 
 async function openIssueModal(issueId) {
     try {
         showLoader();
@@ -235,7 +231,7 @@ async function openIssueModal(issueId) {
     }
 }
 
-// Show issue modal
+ 
 function showIssueModal(issue) {
     if (!issue) {
         showError('Issue not found.');
@@ -292,31 +288,30 @@ function showIssueModal(issue) {
     modal.style.display = 'block';
 }
 
-// Close modal
+ 
 function closeModal() {
     const modal = document.getElementById('issueModal');
     modal.style.display = 'none';
 }
 
-// Update issue count
+ 
 function updateIssueCount(count) {
     const issueCount = document.getElementById('issueCount');
     issueCount.textContent = `${count} issue${count !== 1 ? 's' : ''}`;
 }
-
-// Show loader
+ 
 function showLoader() {
     const loader = document.getElementById('loader');
     loader.style.display = 'flex';
 }
 
-// Hide loader
+ 
 function hideLoader() {
     const loader = document.getElementById('loader');
     loader.style.display = 'none';
 }
 
-// Show error message
+ 
 function showError(message) {
     const container = document.getElementById('issuesContainer');
     container.innerHTML = `
@@ -327,7 +322,7 @@ function showError(message) {
     `;
 }
 
-// Escape HTML to prevent XSS
+ 
 function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
